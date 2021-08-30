@@ -1,5 +1,13 @@
 <template>
 	<view>
+		<view class="weekSelectHeader">
+			<view class="currentWeek" @tap='showOrHideTab'>
+				<view class="weekNumTxt">第一周（本周）</view>
+			</view>
+			<view class="weekTab" v-if="showTab">
+				<vgt-tab :list="weekSelectList" @onValueChange='onTabChange'></vgt-tab>
+			</view>
+		</view>
 		<view class="page">
 			<view class="dayTime">
 				<view class="month">
@@ -299,7 +307,11 @@
 				//当前月份
 				monthInfo: {},
 				//周数选择相关
-				
+				weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周',
+					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
+				],
+				showTab: false,
+				tabIndex:0
 			}
 		},
 
@@ -314,7 +326,6 @@
 				} else {
 					this.onLogin()
 					this.getAppointment()
-					this.getWeekSchedule()
 				}
 			},
 			hideModal() {
@@ -364,7 +375,6 @@
 					url: baseUrl +
 						`schedule/getScheduleByDate?startDate=${this.weekDate[1]}&endDate=${this.weekDate[7]}`,
 					success(res) {
-						console.log(res)
 						_this.weekSchedule = res.data
 						_this.setTotalList()
 					}
@@ -377,6 +387,7 @@
 						`appointment/getAppointmentByDate?startDate=${this.weekDate[1]}&endDate=${this.weekDate[7]}`,
 					success(res) {
 						_this.weekAppointment = res.data
+						_this.getWeekSchedule()
 					}
 				})
 			},
@@ -443,7 +454,7 @@
 					4: moment().subtract(weekOfday - 4, 'days').format('YYYY-MM-DD'),
 					5: moment().subtract(weekOfday - 5, 'days').format('YYYY-MM-DD'),
 					6: moment().subtract(weekOfday - 6, 'days').format('YYYY-MM-DD'),
-					7: moment().add(7 - weekOfday, 'days').format('YYYY-MM-DD')
+					7: moment().subtract(weekOfday - 7, 'days').format('YYYY-MM-DD')
 				}
 				let currentMonthStr = moment().format('MM')
 				let currentMonth = parseInt(currentMonthStr)
@@ -652,6 +663,14 @@
 					}
 				})
 			},
+			onTabChange(e) {
+				this.tabIndex = e.currentId;
+				//可以使用computed：当设定的周数和当前周数一致时，显示“本周”，不一致时，显示“非本周”
+
+			},
+			showOrHideTab() {
+				this.showTab = !this.showTab
+			}
 		},
 		onLoad() {
 			this.setWeekDate()
@@ -721,7 +740,8 @@
 	.month {
 		height: 90rpx;
 	}
-	.weekDayHeight{
+
+	.weekDayHeight {
 		height: 90rpx;
 	}
 
@@ -878,5 +898,26 @@
 
 	.fontFamily {
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	}
+
+
+	.currentWeek {
+		display: flex;
+		justify-content: center;
+		height: 78rpx;
+		background-color: #36c3bb;
+		box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.2);
+	}
+
+	.currentWeek>view {
+		align-self: center;
+		font-size: 34rpx;
+		font-weight: 500;
+	}
+
+
+	.weekTab>>>.scroll-view_hold {
+		padding: 18rpx 0rpx 18rpx 0rpx;
+
 	}
 </style>

@@ -218,6 +218,7 @@
 		display: flex;
 		justify-content: space-around;
 		font-size: 36rpx;
+		
 	}
 	
 	.borderLeft{

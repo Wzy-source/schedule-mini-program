@@ -168,4 +168,7 @@ page {
 	position: absolute;
 	left: 32rpx;
 }
+.zIndex{
+	z-index: 999;
+}
 

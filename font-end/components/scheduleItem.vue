@@ -90,7 +90,7 @@
 	.page {
 		width: 100%;
 		box-sizing: border-box;
-		padding: 2rpx;
+		padding: 4rpx;
 		height: 100%;
 	}
 

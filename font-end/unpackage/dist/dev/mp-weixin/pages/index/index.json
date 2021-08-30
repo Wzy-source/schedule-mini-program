@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "schedule-item": "/components/scheduleItem",
-    "vgt-tab": "/components/vgt-tab/vgt-tab"
+    "vgt-tab": "/components/vgt-tab/vgt-tab",
+    "schedule-item": "/components/scheduleItem"
   }
 }

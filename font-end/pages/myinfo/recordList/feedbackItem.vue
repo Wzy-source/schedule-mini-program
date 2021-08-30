@@ -140,7 +140,7 @@
 			</view>
 		</view>
 		<!-- 反馈内容为空，则弹出模态框 -->
-		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
+		<view class="cu-modal zIndex" :class="modalName=='Modal'?'show':''">
 			<view class="cu-dialog">
 				<view class="cu-bar bg-white justify-end">
 					<view class="content">温馨提示</view>
@@ -154,7 +154,7 @@
 			</view>
 		</view>
 		<!-- 修改成功的提示框 -->
-		<view class="cu-modal" :class="modalName=='successEditModal'?'show':''">
+		<view class="cu-modal zIndex" :class="modalName=='successEditModal'?'show':''">
 			<view class="cu-dialog">
 				<view class="cu-bar bg-white justify-end">
 					<view class="content">温馨提示</view>
@@ -516,5 +516,9 @@
 		color: #8F8F94;
 		position: absolute;
 		left: 32rpx;
+	}
+	
+	.zIndex{
+		z-index: 999;
 	}
 </style>

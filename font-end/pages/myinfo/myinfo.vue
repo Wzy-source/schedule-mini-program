@@ -23,21 +23,8 @@
 				<image src="../../static/operation/arrow.png" mode="scaleToFill"></image>
 			</view>
 		</view>
-		
+
 		<view v-if="isLogin">
-			<view class="myRecordList" @tap="toRecordList">
-				<view style="display: flex; align-self: center;">
-					<view class="imgStyle">
-						<image src="../../static/myInfoIcon/appointment.png" mode="scaleToFill"></image>
-					</view>
-					<view class="fontStyle">
-						查看/填写记录
-					</view>
-				</view>
-				<view class="arrowStyle">
-					<image src="../../static/operation/arrow.png" mode="scaleToFill"></image>
-				</view>
-			</view>
 			<view class="recordBox">
 				<view class="myRecordList" @tap="showNoticeItems">
 					<view style="display: flex; align-self: center;">
@@ -57,7 +44,7 @@
 
 					<view class="noticeNumAndBtn" v-if="isTeacher==='true'">
 						<view class="noticeNum">
-							<text>学生预约通知</text> 
+							<text>学生预约通知</text>
 							<text style="color: #666666;">(剩余次数:</text>
 							<text style="color: #E54D42;">{{studentAppointmentNoticeNum}}</text>
 							<text style="color: #666666;">次)</text>
@@ -68,7 +55,7 @@
 					</view>
 					<view class="noticeNumAndBtn" v-if="isTeacher==='true'">
 						<view class="noticeNum">
-							<text>预约取消通知</text> 
+							<text>预约取消通知</text>
 							<text style="color: #666666;">(剩余次数:</text>
 							<text style="color: #E54D42;">{{studentCancelAppointmentNoticeNum}}</text>
 							<text style="color: #666666;">次)</text>
@@ -80,7 +67,7 @@
 					<!-- 预约受理通知 -->
 					<view class="noticeNumAndBtn" v-if="isTeacher==='false'">
 						<view class="noticeNum">
-							<text>预约受理通知</text> 
+							<text>预约受理通知</text>
 							<text style="color: #666666;">(剩余次数:</text>
 							<text style="color: #E54D42;">{{teacherDealAppointmentNoticeNum}}</text>
 							<text style="color: #666666;">次)</text>
@@ -93,6 +80,36 @@
 					<view class="noticeAlertTxt" v-show="showNoticeAlertTxt">
 						<view>订阅规则说明：</view>
 						<view>小程序订阅规定：您订阅一次，我们有权向您发送一条消息通知</view>
+					</view>
+				</view>
+			</view>
+			<view class="itemContainer">
+				<view class="itemStyle borderButtom" @tap="toRecordList">
+					<view style="display: flex; align-self: center;">
+						<view class="imgStyle">
+							<image src="../../static/myInfoIcon/appointment.png" mode="scaleToFill"></image>
+						</view>
+						<view class="fontStyle">
+							查看/填写记录
+						</view>
+					</view>
+					<view class="arrowStyle">
+						<image src="../../static/operation/arrow.png" mode="scaleToFill"></image>
+					</view>
+				</view>
+
+				<view class="itemStyle" @tap="toSettings">
+					<view style="display: flex; align-self: center;">
+						<view class="imgStyle">
+
+							<image src="../../static/myInfoIcon/settings.png" mode="scaleToFill"></image>
+						</view>
+						<view class="fontStyle">
+							设置
+						</view>
+					</view>
+					<view class="arrowStyle">
+						<image src="../../static/operation/arrow.png" mode="scaleToFill"></image>
 					</view>
 				</view>
 			</view>
@@ -113,8 +130,9 @@
 				//预约剩余次数相关
 				studentAppointmentNoticeNum: 0, //学生预约给老师的通知
 				studentCancelAppointmentNoticeNum: 0, //学生取消预约给老师的通知
-				teacherDealAppointmentNoticeNum:0,//老师处理预约给学生通知
-				isTeacher:''
+				teacherDealAppointmentNoticeNum: 0, //老师处理预约给学生通知
+				isTeacher: '',
+				isLogin: false
 
 			}
 		},
@@ -138,6 +156,11 @@
 				} else {
 					this.showNoticeAlertTxt = false
 				}
+			},
+			toSettings() {
+				uni.navigateTo({
+					url: 'settings/settings'
+				})
 			},
 			/* 增加学生预约通知 */
 			studentAppointmentNotice() {
@@ -186,7 +209,7 @@
 					}
 				})
 			},
-			teacherDealAppointmentNotice(){
+			teacherDealAppointmentNotice() {
 				let _this = this
 				wx.requestSubscribeMessage({
 					tmplIds: ['s508HTgz9M7ZfePv6VCj-Ji54iUbXQmGUUZw_EXrkGk'],
@@ -208,32 +231,29 @@
 						}
 					}
 				})
-				
-			}
-		},
-		computed: {
-			isLogin: function() {
-				if (this.avatarUrl.length === 0 || this.name.length === 0) {
-					return false
-				} else {
-					return true
-				}
+
 			}
 		},
 		onLoad() {
-			this.isTeacher = uni.getStorageSync('isTeacher')
-			let _this = this
-			let skey = uni.getStorageSync('skey')
-			uni.request({
-				url:baseUrl + `permission/getPermission?skey=${skey}`,
-				method:'GET',
-				success(res) {
-					_this.teacherDealAppointmentNoticeNum = res.data.sendStatusCount
-					_this.studentAppointmentNoticeNum = res.data.sendAppointmentCount
-					_this.studentCancelAppointmentNoticeNum = res.data.sendCancelCount
+			if (this.avatarUrl.length === 0 || this.name.length === 0) {
+				this.isLogin = false
+			} else {
+				this.isLogin = true
+				this.isTeacher = uni.getStorageSync('isTeacher')
+				let _this = this
+				let skey = uni.getStorageSync('skey')
+				if (this.isLogin) {
+					uni.request({
+						url: baseUrl + `permission/getPermission?skey=${skey}`,
+						method: 'GET',
+						success(res) {
+							_this.teacherDealAppointmentNoticeNum = res.data.sendStatusCount
+							_this.studentAppointmentNoticeNum = res.data.sendAppointmentCount
+							_this.studentCancelAppointmentNoticeNum = res.data.sendCancelCount
+						}
+					})
 				}
-			})
-
+			}
 		}
 	}
 </script>
@@ -307,6 +327,20 @@
 		background-color: #FFFFFF;
 	}
 
+	.itemStyle {
+		display: flex;
+		justify-content: space-between;
+		height: 90rpx;
+	}
+
+	.itemContainer {
+		padding-left: 16rpx;
+		padding-right: 16rpx;
+		border-radius: 16rpx;
+		margin-top: 16rpx;
+		background-color: #FFFFFF;
+	}
+
 	.fontStyle {
 		align-self: center;
 		font-size: 32rpx;
@@ -373,7 +407,7 @@
 	.noticeNum {
 		font-size: 30rpx;
 	}
-	
+
 
 	.noticeBtn {
 		width: 130rpx;
@@ -406,5 +440,10 @@
 
 	.rotateStyle {
 		transition: transform 0.2s linear;
+	}
+
+	.borderButtom {
+		border: none;
+		border-bottom: 1upx solid rgba(0, 0, 0, 0.1);
 	}
 </style>

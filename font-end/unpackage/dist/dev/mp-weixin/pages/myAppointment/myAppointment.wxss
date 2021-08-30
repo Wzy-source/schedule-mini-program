@@ -28,6 +28,7 @@
 	        flex-direction: row;
 	/* TODO 要和最后的头部颜色一致 */
 	background-color: #36c3bb;
+	box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.2);
 }
 .tab ::-webkit-scrollbar {
 	display: none;

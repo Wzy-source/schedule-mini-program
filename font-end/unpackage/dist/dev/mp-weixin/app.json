@@ -6,7 +6,8 @@
     "pages/myinfo/myinfo",
     "pages/myinfo/recordList/feedbackList",
     "pages/myAppointment/myAppointment",
-    "pages/myinfo/recordList/feedbackItem"
+    "pages/myinfo/recordList/feedbackItem",
+    "pages/myinfo/settings/settings"
   ],
   "subPackages": [],
   "window": {

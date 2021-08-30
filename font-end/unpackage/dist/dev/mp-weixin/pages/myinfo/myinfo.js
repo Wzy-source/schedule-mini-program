@@ -233,7 +233,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -339,33 +373,19 @@ var _default = { data: function data() {return { avatarUrl: uni.getStorageSync('
       studentAppointmentNoticeNum: 0, //学生预约给老师的通知
       studentCancelAppointmentNoticeNum: 0, //学生取消预约给老师的通知
       teacherDealAppointmentNoticeNum: 0, //老师处理预约给学生通知
-      isTeacher: '' };}, methods: { toLogin: function toLogin() {uni.navigateTo({ url: '../login/login' });}, toRecordList: function toRecordList() {uni.navigateTo({ url: 'recordList/feedbackList' });}, showNoticeItems: function showNoticeItems() {var _this2 = this;this.showNotice = !this.showNotice;if (this.showNoticeAlertTxt === false) {setTimeout(function () {_this2.showNoticeAlertTxt = true;}, 250);} else {this.showNoticeAlertTxt = false;}}, /* 增加学生预约通知 */studentAppointmentNotice: function studentAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['D9rT-8zRcF-YRyS2vNQQHc4IzXXvrMH9qxhC8eBiwRw'], success: function success(res) {if (res['D9rT-8zRcF-YRyS2vNQQHc4IzXXvrMH9qxhC8eBiwRw'] === 'accept') {uni.request({ url: _url.default + "permission/increaseAppointmentCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.studentAppointmentNoticeNum = res.data.data;} });}} });}, studentCancelAppointmentNotice: function studentCancelAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['-mGz-2oSlZIrm-nfK6V2jj7sUSq3v1cEn6x8x-aSvyo'], success: function success(res) {if (res['-mGz-2oSlZIrm-nfK6V2jj7sUSq3v1cEn6x8x-aSvyo'] === 'accept') {uni.request({ url: _url.default + "permission/increaseCancelCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.studentCancelAppointmentNoticeNum = res.data.data;} });}} });}, teacherDealAppointmentNotice: function teacherDealAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['s508HTgz9M7ZfePv6VCj-Ji54iUbXQmGUUZw_EXrkGk'], success: function success(res) {if (res['s508HTgz9M7ZfePv6VCj-Ji54iUbXQmGUUZw_EXrkGk'] === 'accept') {uni.request({ url: _url.default + "permission/increaseStatusCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.teacherDealAppointmentNoticeNum = res.data.data;} });}} });
+      isTeacher: '', isLogin: false };}, methods: { toLogin: function toLogin() {uni.navigateTo({ url: '../login/login' });}, toRecordList: function toRecordList() {uni.navigateTo({ url: 'recordList/feedbackList' });}, showNoticeItems: function showNoticeItems() {var _this2 = this;this.showNotice = !this.showNotice;if (this.showNoticeAlertTxt === false) {setTimeout(function () {_this2.showNoticeAlertTxt = true;}, 250);} else {this.showNoticeAlertTxt = false;}}, toSettings: function toSettings() {uni.navigateTo({ url: 'settings/settings' });}, /* 增加学生预约通知 */studentAppointmentNotice: function studentAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['D9rT-8zRcF-YRyS2vNQQHc4IzXXvrMH9qxhC8eBiwRw'], success: function success(res) {if (res['D9rT-8zRcF-YRyS2vNQQHc4IzXXvrMH9qxhC8eBiwRw'] === 'accept') {uni.request({ url: _url.default + "permission/increaseAppointmentCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.studentAppointmentNoticeNum = res.data.data;} });}} });}, studentCancelAppointmentNotice: function studentCancelAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['-mGz-2oSlZIrm-nfK6V2jj7sUSq3v1cEn6x8x-aSvyo'], success: function success(res) {if (res['-mGz-2oSlZIrm-nfK6V2jj7sUSq3v1cEn6x8x-aSvyo'] === 'accept') {uni.request({ url: _url.default + "permission/increaseCancelCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.studentCancelAppointmentNoticeNum = res.data.data;} });}} });}, teacherDealAppointmentNotice: function teacherDealAppointmentNotice() {var _this = this;wx.requestSubscribeMessage({ tmplIds: ['s508HTgz9M7ZfePv6VCj-Ji54iUbXQmGUUZw_EXrkGk'], success: function success(res) {if (res['s508HTgz9M7ZfePv6VCj-Ji54iUbXQmGUUZw_EXrkGk'] === 'accept') {uni.request({ url: _url.default + "permission/increaseStatusCount", method: 'POST', header: { 'content-type': 'application/x-www-form-urlencoded' }, data: { skey: uni.getStorageSync('skey') }, success: function success(res) {_this.teacherDealAppointmentNoticeNum = res.data.data;} });}} });} }, onLoad: function onLoad() {if (this.avatarUrl.length === 0 || this.name.length === 0) {this.isLogin = false;} else {this.isLogin = true;this.isTeacher = uni.getStorageSync('isTeacher');var _this = this;var skey = uni.getStorageSync('skey');
+      if (this.isLogin) {
+        uni.request({
+          url: _url.default + "permission/getPermission?skey=".concat(skey),
+          method: 'GET',
+          success: function success(res) {
+            _this.teacherDealAppointmentNoticeNum = res.data.sendStatusCount;
+            _this.studentAppointmentNoticeNum = res.data.sendAppointmentCount;
+            _this.studentCancelAppointmentNoticeNum = res.data.sendCancelCount;
+          } });
 
-    } },
-
-  computed: {
-    isLogin: function isLogin() {
-      if (this.avatarUrl.length === 0 || this.name.length === 0) {
-        return false;
-      } else {
-        return true;
       }
-    } },
-
-  onLoad: function onLoad() {
-    this.isTeacher = uni.getStorageSync('isTeacher');
-    var _this = this;
-    var skey = uni.getStorageSync('skey');
-    uni.request({
-      url: _url.default + "permission/getPermission?skey=".concat(skey),
-      method: 'GET',
-      success: function success(res) {
-        _this.teacherDealAppointmentNoticeNum = res.data.sendStatusCount;
-        _this.studentAppointmentNoticeNum = res.data.sendAppointmentCount;
-        _this.studentCancelAppointmentNoticeNum = res.data.sendCancelCount;
-      } });
-
-
+    }
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

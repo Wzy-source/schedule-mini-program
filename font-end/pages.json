@@ -15,13 +15,14 @@
 		{
 			"path":"pages/myinfo/recordList/feedbackList"
 		},
-		
-		
 		{
 			"path":"pages/myAppointment/myAppointment"
 		},
 		{
 			"path":"pages/myinfo/recordList/feedbackItem"
+		},
+		{
+			"path":"pages/myinfo/settings/settings"
 		}
 			
 	],

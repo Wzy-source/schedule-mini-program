@@ -227,7 +227,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var appointmentCard = function appointmentCard() {__webpack_require__.e(/*! require.ensure | components/appointmentCard */ "components/appointmentCard").then((function () {return resolve(__webpack_require__(/*! ../../components/appointmentCard.vue */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var appointmentCard = function appointmentCard() {__webpack_require__.e(/*! require.ensure | components/appointmentCard */ "components/appointmentCard").then((function () {return resolve(__webpack_require__(/*! ../../components/appointmentCard.vue */ 236));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
     appointmentCard: appointmentCard },
