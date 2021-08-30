@@ -1,0 +1,170 @@
+
+.page.data-v-57280228 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	text-align: center;
+	padding: 12rpx;
+}
+.dayTime.data-v-57280228 {
+	width: 10%;
+	display: grid;
+	/* 单元格的高度 */
+	grid-template-rows: 90rpx repeat(11, 160rpx);
+}
+.month.data-v-57280228 {
+	height: 90rpx;
+}
+.weekDayHeight.data-v-57280228{
+	height: 90rpx;
+}
+.dayTimeItem.data-v-57280228 {
+	border: none;
+	border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	font-size: 26rpx;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.dayTimeItem>view.data-v-57280228 {
+	-webkit-align-self: center;
+	        align-self: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.dayTimeItem>view>view.data-v-57280228 {
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.weekDayItemContainer.data-v-57280228 {
+	/* 若修改单元格的高度，这里也要同步修改 */
+	height: 1760rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	width: 100%;
+}
+.weekDay.data-v-57280228 {
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(7, 14.2857142857%);
+}
+.padding-xl.data-v-57280228 {
+	font-size: 30rpx;
+}
+.scheduleItem.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-bottom: 16rpx;
+}
+.scheduleItem>image.data-v-57280228 {
+	width: 40rpx;
+	height: 40rpx;
+}
+.scheduleTxt.data-v-57280228 {
+	margin-left: 16rpx;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 30rpx;
+	text-align: left;
+}
+.createScheduleItem.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-bottom: 16rpx;
+}
+.createIcon.data-v-57280228 {
+	width: 40rpx;
+	height: 40rpx;
+}
+.createIcon>image.data-v-57280228 {
+	height: 100%;
+	width: 100%;
+}
+.createTxt.data-v-57280228 {
+	margin-left: 16rpx;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.createTxt>view.data-v-57280228 {
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.createInput.data-v-57280228 {
+
+	width: 60%;
+}
+.createInput>input.data-v-57280228 {
+	width: 100%;
+	border: none;
+	border-bottom: #1296DB solid 2rpx;
+	text-align: left;
+	padding-left: 8rpx;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.confirmBtn.data-v-57280228 {
+	height: 70rpx;
+	width: 70rpx;
+	position: fixed;
+	bottom: 140rpx;
+	right: 60rpx;
+}
+.confirmBtn>image.data-v-57280228 {
+	width: 100%;
+	height: 100%;
+}
+.deleteBtn.data-v-57280228 {
+	height: 70rpx;
+	width: 70rpx;
+	position: fixed;
+	bottom: 60rpx;
+	right: 60rpx;
+}
+.deleteBtn>image.data-v-57280228 {
+	width: 100%;
+	height: 100%;
+}
+.confirmDeleteTxt.data-v-57280228 {
+	color: #ED1C24;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.left.data-v-57280228 {
+	margin-left: 16rpx;
+}
+.right.data-v-57280228 {
+	margin-right: 16rpx;
+}
+.pickerFontStyle.data-v-57280228 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	color: #707070;
+	font-size: 30rpx;
+}
+.marginBetween.data-v-57280228 {
+	margin-left: 8rpx;
+	margin-right: 8rpx;
+}
+.fontFamily.data-v-57280228 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "appointment-card": "/components/appointmentCard"
+  }
+}

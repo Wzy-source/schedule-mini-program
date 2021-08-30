@@ -1,0 +1,1 @@
+<view class="page"><view class="logo"></view><view class="name">菲姐陪你唠</view><view class="btn"><button data-event-opts="{{[['tap',[['getUserProfile',['$event']]]]]}}" class="cu-btn round bg-gradual-blue" bindtap="__e">微信登陆</button></view></view>

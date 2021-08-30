@@ -1,0 +1,171 @@
+
+page {
+	background-color: #FFFFFF;
+}
+.page {
+	box-sizing: border-box;
+	padding: 24rpx 32rpx;
+}
+.appointmentStatus {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.appointmentStatus>view {
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.statusTxt {
+	font-weight: 500;
+	font-size: 32rpx;
+}
+.timeAndPlace {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	margin-top: 32rpx;
+	color: #666666;
+}
+.time,
+.place {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.timeIcon,
+.placeIcon {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 52rpx;
+	width: 52rpx;
+}
+.timeIcon>image,
+.placeIcon>image {
+	height: 100%;
+	width: 100%;
+}
+.timeTxt,
+.placeTxt {
+	-webkit-align-self: center;
+	        align-self: center;
+	margin-left: 8rpx;
+	font-size: 30rpx;
+}
+.avatarAndName {
+	margin-top: 32rpx;
+	height: 160rpx;
+	padding: 20rpx 8rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	border: none;
+	border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.avatar {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 84rpx;
+	width: 84rpx;
+	border-radius: 50%;
+}
+.avatar>image {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+}
+.nameAndId {
+	-webkit-align-self: center;
+	        align-self: center;
+	margin-left: 16rpx;
+	font-size: 30rpx;
+	color: #666666;
+}
+.arrow {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 26rpx;
+	width: 26rpx;
+}
+.arrow>image {
+	height: 100%;
+	width: 100%;
+}
+.content,
+.studentFeedback,
+.teacherRecord {
+	margin-top: 32rpx;
+}
+.headerFontStyle {
+	font-weight: 500;
+	font-size: 36rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.headerFontStyle>view {
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.headerImg {
+	height: 50rpx;
+	width: 50rpx;
+	margin-left: 2rpx;
+}
+.headerImg>image {
+	height: 100%;
+	width: 100%;
+}
+.contentTxt {
+	margin-top: 32rpx;
+	font-size: 32rpx;
+	margin-left: 16rpx;
+}
+.hasFeedback {
+	font-size: 30rpx;
+	padding: 16rpx;
+	background-color: #F8F8F8;
+	min-height: 50rpx;
+	border-radius: 16rpx;
+}
+.otherTxt {
+	margin-top: 16rpx;
+	font-size: 26rpx;
+	color: #8F8F94;
+	margin-left: 16rpx;
+}
+.feedback {
+	margin-top: 32rpx;
+}
+.noFeedbackAlert {
+	text-align: center;
+	font-size: 26rpx;
+	color: #8F8F94;
+}
+.record {
+	position: relative;
+}
+.recordArea>textarea {
+	background-color: #F8F8F8;
+	padding: 16rpx;
+	font-size: 30rpx;
+	min-height: 200rpx;
+}
+.editTime {
+	font-size: 24rpx;
+	color: #8F8F94;
+	position: absolute;
+	left: 32rpx;
+}
+

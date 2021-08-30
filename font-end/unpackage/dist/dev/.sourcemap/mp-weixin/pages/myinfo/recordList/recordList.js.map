@@ -1,0 +1,1 @@
+{"version":3,"sources":["uni-app:///main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,mH;AACAA,UAAU,CAACC,mBAAD,CAAV,C","file":"pages/myinfo/recordList/recordList.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './pages/myinfo/recordList/recordList.vue'\ncreatePage(Page)"],"sourceRoot":""}

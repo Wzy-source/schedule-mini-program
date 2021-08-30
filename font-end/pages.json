@@ -1,16 +1,59 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
+			"path": "pages/index/index"
+		},
+		{
+			"path":"pages/login/login"
+		},
+		{
+			"path":"pages/authenticate/authenticate"
+		},
+		{
+			"path":"pages/myinfo/myinfo"
+		},
+		{
+			"path":"pages/myinfo/recordList/feedbackList"
+		},
+		
+		
+		{
+			"path":"pages/myAppointment/myAppointment"
+		},
+		{
+			"path":"pages/myinfo/recordList/feedbackItem"
 		}
+			
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "菲姐陪你唠一唠",
+		"navigationBarBackgroundColor": "#36c3bb",
+		"backgroundColor": "#F0F0F0"
+	},
+	
+	"tabBar": {
+		"color": "#808080",
+		"selectedColor": "#0081FF",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "日程",
+				"iconPath": "static/icon/查阅日程.png",
+				"selectedIconPath":"static/icon/查阅日程h.png"
+			},
+			{
+				"pagePath":"pages/myAppointment/myAppointment",
+				"text":"预约",
+				"iconPath":"static/icon/预约管理.png",
+				"selectedIconPath": "static/icon/预约管理h.png"	
+			},
+			{
+				"pagePath": "pages/myinfo/myinfo",
+				"text": "我的",
+				"iconPath": "static/icon/我的.png",
+				"selectedIconPath": "static/icon/我的h.png"
+			}
+			
+		]
 	}
 }

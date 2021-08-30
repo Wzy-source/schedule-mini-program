@@ -1,0 +1,165 @@
+
+.page {
+	box-sizing: border-box;
+	padding-left: 16rpx;
+	padding-right: 16rpx;
+	padding-top: 20rpx;
+}
+.loginPanel,
+.avatarAndName {
+	padding-left: 16rpx;
+	padding-right: 16rpx;
+	border-radius: 16rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	height: 180rpx;
+	background-color: #FFFFFF;
+}
+.avatar {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 110rpx;
+	width: 110rpx;
+	border-radius: 50%;
+}
+.avatar>image {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+}
+.loginTxt {
+	-webkit-align-self: center;
+	        align-self: center;
+	font-weight: 500;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 38rpx;
+	margin-left: 24rpx;
+}
+.nameTxt {
+	-webkit-align-self: center;
+	        align-self: center;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 30rpx;
+	margin-left: 24rpx;
+}
+.toLoginArrow {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 32rpx;
+	width: 32rpx;
+}
+.toLoginArrow>image {
+	height: 100%;
+	width: 100%;
+}
+.myRecordList {
+	height: 90rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding-left: 16rpx;
+	padding-right: 16rpx;
+	border-radius: 16rpx;
+	margin-top: 16rpx;
+	background-color: #FFFFFF;
+}
+.fontStyle {
+	-webkit-align-self: center;
+	        align-self: center;
+	font-size: 32rpx;
+	margin-left: 16rpx;
+}
+.imgStyle {
+	-webkit-align-self: center;
+	        align-self: center;
+	height: 40rpx;
+	width: 40rpx;
+}
+.imgStyle>image {
+	height: 100%;
+	width: 100%;
+}
+.arrowStyle {
+	height: 24rpx;
+	width: 24rpx;
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.arrowStyle>image {
+	height: 100%;
+	width: 100%;
+}
+.noticeInfo {
+	position: relative;
+	-webkit-transition: height 0.4s linear;
+	transition: height 0.4s linear;
+	overflow: hidden;
+	padding-left: 72rpx;
+	padding-right: 32rpx;
+}
+.showNoticeContentStyle {
+	height: 450rpx;
+}
+.hideNoticeContentStyle {
+	height: 0rpx;
+}
+.noticeNumAndBtn {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	border: none;
+	border-bottom: 1rpx rgba(0, 0, 0, 0.1) solid;
+	height: 110rpx;
+}
+.noticeNumAndBtn>view {
+	-webkit-align-self: center;
+	        align-self: center;
+}
+.recordBox {
+	background-color: #FFFFFF;
+	border-radius: 16rpx;
+}
+.noticeNum {
+	font-size: 30rpx;
+}
+.noticeBtn {
+	width: 130rpx;
+	height: 50rpx;
+	font-size: 24rpx;
+	padding: 2rpx;
+}
+.noticeAlertTxt {
+	text-align: left;
+	position: absolute;
+	bottom: 32rpx;
+}
+.noticeAlertTxt :nth-child(1) {
+	font-size: 24rpx;
+	color: #8F8F94;
+}
+.noticeAlertTxt :nth-child(2) {
+	font-size: 24rpx;
+	color: #8F8F94;
+	margin-top: 8rpx;
+}
+.showNoticeArrowStyle {
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
+}
+.rotateStyle {
+	-webkit-transition: -webkit-transform 0.2s linear;
+	transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+	transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+}
+

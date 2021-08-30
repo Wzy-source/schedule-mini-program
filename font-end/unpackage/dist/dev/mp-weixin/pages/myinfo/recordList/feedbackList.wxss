@@ -1,0 +1,11 @@
+
+.cardContainer {
+	padding: 16rpx;
+}
+.moMoreTxt {
+	font-size: 26rpx;
+	margin-top: 32rpx;
+	text-align: center;
+	color: #8F8F94;
+}
+

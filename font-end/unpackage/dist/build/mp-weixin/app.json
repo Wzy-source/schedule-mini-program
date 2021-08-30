@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/authenticate/authenticate",
+    "pages/myinfo/myinfo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "菲姐陪你唠",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F0F0F0"
+  },
+  "tabBar": {
+    "color": "#808080",
+    "selectedColor": "#0081FF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "预约",
+        "iconPath": "static/icon/预约管理.png",
+        "selectedIconPath": "static/icon/预约管理h.png"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "我的",
+        "iconPath": "static/icon/我的.png",
+        "selectedIconPath": "static/icon/我的h.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

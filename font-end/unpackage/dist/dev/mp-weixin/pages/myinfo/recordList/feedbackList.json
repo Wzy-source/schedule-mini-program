@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vgt-tab": "/components/vgt-tab/vgt-tab",
+    "appointment-card": "/components/appointmentCard"
+  }
+}
