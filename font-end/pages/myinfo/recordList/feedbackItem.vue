@@ -130,6 +130,7 @@
 						</view>
 						<view class="editTime" v-if="feedbackInfo.createTime!==null">
 							最新编辑于：{{feedbackInfo.createTime}}
+							
 						</view>
 						<view class="margin-tb-sm text-right" style="margin-right: 40rpx;">
 							<button class="cu-btn round shadow bg-gray"
@@ -142,6 +143,7 @@
 		<!-- 反馈内容为空，则弹出模态框 -->
 		<view class="cu-modal zIndex" :class="modalName=='Modal'?'show':''">
 			<view class="cu-dialog">
+				
 				<view class="cu-bar bg-white justify-end">
 					<view class="content">温馨提示</view>
 					<view class="action" @tap="hideModal">

@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -161,24 +161,21 @@ var _default =
       '第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'],
 
       selectorIndex: 0,
-      currentWeekTxt: '' };
+      currentWeekTxt: '第一周' };
 
   },
   methods: {
     onPickerChange: function onPickerChange(event) {
       var index = event.detail.value;
       this.currentWeekTxt = this.weekSelectList[index];
-      //TODO 
-    },
-    setCurrentWeek: function setCurrentWeek() {
-      //TODO 使用
-
-
+      uni.setStorageSync('currentWeek', index);
     } },
 
   onLoad: function onLoad() {
-    this.setCurrentWeek();
+    this.selectorIndex = parseInt(uni.getStorageSync('currentWeek'));
+    this.currentWeekTxt = this.weekSelectList[this.selectorIndex];
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -6,12 +6,18 @@
 			</view>
 			<view class="nickname">{{nickName}},请进行实名认证</view>
 			<view class="form">
-				<view class="cu-form-group margin-top">
+				<view class="inputStyle">
 					<input placeholder="姓名" type="text" v-model="name"></input>
 				</view>
-				<view class="cu-form-group">
+				<view class="inputStyle">
 					<input placeholder="学工号" type="text" v-model="studentId"></input>
 				</view>
+			</view>
+			<view class="weekPicker">
+				<view>当前周数</view>
+				<picker mode="selector" :range="weekSelectList" @change="onValueChange">
+					<view style="color: #5ab2b3;">{{currentWeek}}</view>
+				</picker>
 			</view>
 			<view class="toIndexBtn">
 				<button class="cu-btn round bg-gradual-blue" @tap="certification">确认</button>
@@ -29,7 +35,12 @@
 				nickName: '',
 				avatarUrl: '',
 				name: '',
-				studentId: ''
+				studentId: '',
+				weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周',
+					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
+				],
+				currentWeek: '请选择'
+
 			}
 		},
 		methods: {
@@ -45,7 +56,7 @@
 						name: this.name,
 						studentId: this.studentId,
 						skey: uni.getStorageSync('skey'),
-						avatar:this.avatarUrl
+						avatar: this.avatarUrl
 					},
 					success(res) {
 						uni.setStorageSync('name', _this.name);
@@ -68,6 +79,11 @@
 						}
 					}
 				})
+			},
+			onValueChange(e) {
+				let index = e.detail.value
+				this.currentWeek = this.weekSelectList[index]
+				uni.setStorageSync('currentWeek',index)
 			}
 		},
 
@@ -122,19 +138,24 @@
 		flex-direction: column;
 	}
 
-	.cu-form-group {
+	.inputStyle {
 		align-self: center;
-		border-radius: 120rpx;
+		width: 80%;
 		margin-bottom: 32rpx;
-		border: #1296db 2rpx solid;
-		width: 90%;
-		padding-left: 48rpx;
+		border: none;
+		border-bottom: #1296db 2rpx solid;
+	}
+
+	.inputStyle>input {
+		height: 100rpx;
+		padding-left: 40rpx;
+		font-size: 32rpx;
 	}
 
 	.toIndexBtn {
 		align-self: center;
-		margin-top: 32rpx;
-		width: 70%;
+		margin-top: 80rpx;
+		width: 60%;
 		height: 80rpx;
 	}
 
@@ -145,5 +166,30 @@
 		font-weight: 300;
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 		box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.3);
+	}
+
+	.weekPicker {
+		display: flex;
+		align-self: center;
+		width: 80%;
+		justify-content: space-between;
+		padding-left: 36rpx;
+		margin-top: 42rpx;
+		border: none;
+		border-bottom: #1296db 2rpx solid;
+		padding-bottom: 24rpx;
+	}
+
+	.weekPicker>view {
+		align-self: center;
+		font-size: 32rpx;
+		color: #666666;
+	}
+
+	.weekPicker>picker {
+		color: #8F8F94;
+		font-size: 32rpx;
+		align-self: center;
+		font-weight: 500;
 	}
 </style>

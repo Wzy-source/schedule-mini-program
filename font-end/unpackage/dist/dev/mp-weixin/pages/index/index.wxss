@@ -187,4 +187,9 @@
 .weekTab.data-v-57280228 .scroll-view_hold {
 	padding: 18rpx 0rpx 18rpx 0rpx;
 }
+.padding-left-right.data-v-57280228{
+	padding: 0rpx 32rpx;
+}
+
+
 

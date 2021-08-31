@@ -411,10 +411,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));
 
 var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 18));
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -639,19 +641,36 @@ var scheduleItem = function scheduleItem() {__webpack_require__.e(/*! require.en
       studentName: uni.getStorageSync('name'), otherContent: '', //学生预约成功失败提示文字
       appointmentAlertMsg: '', //当前月份
       monthInfo: {}, //周数选择相关
-      weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周', '第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'], showTab: false, tabIndex: 0 };}, methods: { doInit: function doInit() {// 初始化操作：若没登录，则进行登陆，若已经登录，则获取日程安排
-      var avatarUrl = uni.getStorageSync('avatarUrl');var nickName = uni.getStorageSync('nickName');var name = uni.getStorageSync('name');if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0) {//没有本地存储为新用户，请先登录
+      weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周', '第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'], showTab: false, currentWeekIndex: 0, selectWeekIndex: 0 };}, methods: { doInit: function doInit() {// 初始化操作：若没登录，则进行登陆，若已经登录，则获取日程安排
+      var avatarUrl = uni.getStorageSync('avatarUrl');var nickName = uni.getStorageSync('nickName');var name = uni.getStorageSync('name');if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0 || this.currentWeekIndex.length === 0) {//没有本地存储为新用户，请先登录
         this.modalName = 'DialogModal1';} else {this.onLogin();this.getAppointment();}}, hideModal: function hideModal() {this.modalName = null;this.startHourTxt = '请选择';this.endHourTxt = '请选择';}, toLogin: function toLogin() {this.modalName = null;uni.navigateTo({ url: '../login/login' });}, onClick: function onClick(i, j) {this.showOptBtn = false;this.itemInfo = this.totalList[i][j];if (this.itemInfo.type !== 'none') {//点击事件，显示模态框
-        this.modalName = 'clickEvent';}}, onLongPress: function onLongPress(i, j) {this.itemInfo = this.totalList[i][j];if (this.itemInfo.type === 'none') {this.startHourRange = [];this.endHourRange = [];this.otherContent = '';this.createPlace = '';this.createContent = '';this.startHourTxt = '请选择';this.endHourTxt = '请选择';this.modalName = 'longpressEvent';var startHour = parseInt(this.itemInfo.startTime.split(':')[0]);for (var i = startHour; i < 20; i++) {var hourStr = i === 9 ? '09:00' : i + ':00';this.startHourRange.push(hourStr);}} else if (this.isTeacher === 'true' && this.itemInfo.type === 'teacher') {this.showOptBtn = true;} else if (this.isTeacher === 'false' && this.itemInfo.type === 'student') {this.showOptBtn = true;}}, getWeekSchedule: function getWeekSchedule() {var _this = this;uni.request({ url: _url.default + "schedule/getScheduleByDate?startDate=".concat(this.weekDate[1], "&endDate=").concat(this.weekDate[7]), success: function success(res) {_this.weekSchedule = res.data;_this.setTotalList();} });}, getAppointment: function getAppointment() {var _this = this;uni.request({ url: _url.default + "appointment/getAppointmentByDate?startDate=".concat(this.weekDate[1], "&endDate=").concat(this.weekDate[7]), success: function success(res) {_this.weekAppointment = res.data;_this.getWeekSchedule();} });}, setTotalList: function setTotalList() {this.totalList = [];var tempList = [];var list = [];for (var i = 1; i <= 7; i++) {var dayList = [];for (var j = 0; j < this.weekSchedule[i].length; j++) {this.weekSchedule[i][j].type = 'teacher';this.weekSchedule[i][j].name = '毕菲菲';dayList.push(this.weekSchedule[i][j]);}for (var k = 0; k < this.weekAppointment[i].length; k++) {this.weekAppointment[i][k].type = 'student';dayList.push(this.weekAppointment[i][k]);}list.push(dayList);}for (var i = 0; i < 7; i++) {var _dayList = [];for (var j = 0; j < 11; j++) {_dayList.push({ date: this.weekDate[i + 1], startTime: j === 0 ? '09:00' : j + 9 + ':00', endTime: j + 10 + ':00', type: 'none' });}tempList.push(_dayList);}for (var i = 0; i < 7; i++) {var _dayList2 = list[i];for (var j = 0; j < _dayList2.length; j++) {var item = _dayList2[j];var startIndex = parseInt(item.startTime) - 9;var endIndex = parseInt(item.endTime) - 9;for (var k = startIndex; k < endIndex; k++) {delete tempList[i][k];}tempList[i].splice(startIndex, 1, item);}}for (var i = 0; i < tempList.length; i++) {var _dayList3 = [];for (var j = 0; j < tempList[i].length; j++) {if (tempList[i][j] !== undefined) {_dayList3.push(tempList[i][j]);}}this.totalList.push(_dayList3);}this.setHeight();}, setWeekDate: function setWeekDate() {var weekOfday = (0, _moment.default)().format('E'); //计算今天是这周第几天
-      this.weekDate = { 1: (0, _moment.default)().subtract(weekOfday - 1, 'days').format('YYYY-MM-DD'),
-        2: (0, _moment.default)().subtract(weekOfday - 2, 'days').format('YYYY-MM-DD'),
-        3: (0, _moment.default)().subtract(weekOfday - 3, 'days').format('YYYY-MM-DD'),
-        4: (0, _moment.default)().subtract(weekOfday - 4, 'days').format('YYYY-MM-DD'),
-        5: (0, _moment.default)().subtract(weekOfday - 5, 'days').format('YYYY-MM-DD'),
-        6: (0, _moment.default)().subtract(weekOfday - 6, 'days').format('YYYY-MM-DD'),
-        7: (0, _moment.default)().subtract(weekOfday - 7, 'days').format('YYYY-MM-DD') };
+        this.modalName = 'clickEvent';}}, onLongPress: function onLongPress(i, j) {this.itemInfo = this.totalList[i][j];if (this.itemInfo.type === 'none') {this.startHourRange = [];this.endHourRange = [];this.otherContent = '';this.createPlace = '';this.createContent = '';this.startHourTxt = '请选择';this.endHourTxt = '请选择';this.modalName = 'longpressEvent';var startHour = parseInt(this.itemInfo.startTime.split(':')[0]);for (var i = startHour; i < 20; i++) {var hourStr = i === 9 ? '09:00' : i + ':00';this.startHourRange.push(hourStr);}} else if (this.isTeacher === 'true' && this.itemInfo.type === 'teacher') {this.showOptBtn = true;} else if (this.isTeacher === 'false' && this.itemInfo.type === 'student') {this.showOptBtn = true;}}, getWeekSchedule: function getWeekSchedule() {var _this = this;uni.request({ url: _url.default + "schedule/getScheduleByDate?startDate=".concat(this.weekDate[1], "&endDate=").concat(this.weekDate[7]), success: function success(res) {_this.weekSchedule = res.data;_this.setTotalList();} });}, getAppointment: function getAppointment() {var _this = this;uni.request({ url: _url.default + "appointment/getAppointmentByDate?startDate=".concat(this.weekDate[1], "&endDate=").concat(this.weekDate[7]), success: function success(res) {_this.weekAppointment = res.data;_this.getWeekSchedule();} });}, setTotalList: function setTotalList() {this.totalList = [];var tempList = [];var list = [];for (var i = 1; i <= 7; i++) {var dayList = [];for (var j = 0; j < this.weekSchedule[i].length; j++) {this.weekSchedule[i][j].type = 'teacher';this.weekSchedule[i][j].name = '毕菲菲';dayList.push(this.weekSchedule[i][j]);}for (var k = 0; k < this.weekAppointment[i].length; k++) {this.weekAppointment[i][k].type = 'student';dayList.push(this.weekAppointment[i][k]);}list.push(dayList);}for (var i = 0; i < 7; i++) {var _dayList = [];for (var j = 0; j < 11; j++) {_dayList.push({ date: this.weekDate[i + 1], startTime: j === 0 ? '09:00' : j + 9 + ':00', endTime: j + 10 + ':00', type: 'none' });}tempList.push(_dayList);}for (var i = 0; i < 7; i++) {var _dayList2 = list[i];for (var j = 0; j < _dayList2.length; j++) {var item = _dayList2[j];var startIndex = parseInt(item.startTime) - 9;var endIndex = parseInt(item.endTime) - 9;for (var k = startIndex; k < endIndex; k++) {delete tempList[i][k];}tempList[i].splice(startIndex, 1, item);}}for (var i = 0; i < tempList.length; i++) {var _dayList3 = [];for (var j = 0; j < tempList[i].length; j++) {if (tempList[i][j] !== undefined) {_dayList3.push(tempList[i][j]);}}this.totalList.push(_dayList3);}this.setHeight();}, onTabChange: function onTabChange(e) {this.selectWeekIndex = e.currentInd;
+      this.setWeekDate();
+      this.doInit();
 
-      var currentMonthStr = (0, _moment.default)().format('MM');
+    },
+    showOrHideTab: function showOrHideTab() {
+      this.showTab = !this.showTab;
+    },
+    setCurrentWeek: function setCurrentWeek() {
+      this.currentWeekIndex = uni.getStorageSync('currentWeek').length === 0 ? 0 : parseInt(uni.getStorageSync('currentWeek'));
+      this.selectWeekIndex = this.currentWeekIndex;
+    },
+
+    setWeekDate: function setWeekDate() {
+      var gapWeekNum = this.selectWeekIndex - this.currentWeekIndex; //选中的周数和当前周数之间的差值
+      var weekOfday = (0, _moment.default)().format('E'); //计算今天是这周第几天
+      this.weekDate = {
+        1: (0, _moment.default)().subtract(weekOfday - 1 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        2: (0, _moment.default)().subtract(weekOfday - 2 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        3: (0, _moment.default)().subtract(weekOfday - 3 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        4: (0, _moment.default)().subtract(weekOfday - 4 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        5: (0, _moment.default)().subtract(weekOfday - 5 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        6: (0, _moment.default)().subtract(weekOfday - 6 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD'),
+        7: (0, _moment.default)().subtract(weekOfday - 7 - 7 * gapWeekNum, 'days').format('YYYY-MM-DD') };
+
+      //月份是每周的第一天
+      var currentMonthStr = (0, _moment.default)().subtract(weekOfday - 1 - 7 * gapWeekNum, 'days').format('MM');
       var currentMonth = parseInt(currentMonthStr);
       var monthEnglishStr = '';
       if (currentMonth === 1) {
@@ -857,21 +876,16 @@ var scheduleItem = function scheduleItem() {__webpack_require__.e(/*! require.en
 
         } });
 
-    },
-    onTabChange: function onTabChange(e) {
-      this.tabIndex = e.currentId;
-      //可以使用computed：当设定的周数和当前周数一致时，显示“本周”，不一致时，显示“非本周”
-
-    },
-    showOrHideTab: function showOrHideTab() {
-      this.showTab = !this.showTab;
     } },
 
   onLoad: function onLoad() {
+    this.setCurrentWeek();
     this.setWeekDate();
     this.doInit();
   },
   onTabItemTap: function onTabItemTap(e) {
+    this.setCurrentWeek();
+    this.setWeekDate();
     this.doInit();
   },
   computed: {
@@ -911,6 +925,13 @@ var scheduleItem = function scheduleItem() {__webpack_require__.e(/*! require.en
         }
       }
       return list;
+    },
+    headerWeekTxt: function headerWeekTxt() {
+      if (this.currentWeekIndex === this.selectWeekIndex) {
+        return this.weekSelectList[this.currentWeekIndex] + '（本周）';
+      } else {
+        return this.weekSelectList[this.selectWeekIndex] + '（非本周）';
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

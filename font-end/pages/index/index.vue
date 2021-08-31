@@ -2,10 +2,11 @@
 	<view>
 		<view class="weekSelectHeader">
 			<view class="currentWeek" @tap='showOrHideTab'>
-				<view class="weekNumTxt">第一周（本周）</view>
+				<view class="weekNumTxt">{{headerWeekTxt}}</view>
 			</view>
 			<view class="weekTab" v-if="showTab">
-				<vgt-tab :list="weekSelectList" @onValueChange='onTabChange'></vgt-tab>
+				<vgt-tab :list="weekSelectList" @onValueChange='onTabChange' :defaultChoseInd="currentWeekIndex">
+				</vgt-tab>
 			</view>
 		</view>
 		<view class="page">
@@ -188,7 +189,7 @@
 		<!-- 点击删除按钮弹出的底部窗口 -->
 		<view class="cu-modal bottom-modal" :class="modalName=='confirmDelete'?'show':''">
 			<view class="cu-dialog">
-				<view class="cu-bar bg-white">
+				<view class="cu-bar bg-white padding-left-right">
 					<button class="cu-btn bg-gradual-blue left" @tap="hideModal">取消</button>
 					<button class="cu-btn bg-yellow right" @tap='confirmDeleteItem'>确定</button>
 				</view>
@@ -311,7 +312,8 @@
 					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
 				],
 				showTab: false,
-				tabIndex:0
+				currentWeekIndex: 0,
+				selectWeekIndex: 0,
 			}
 		},
 
@@ -321,7 +323,8 @@
 				let avatarUrl = uni.getStorageSync('avatarUrl');
 				let nickName = uni.getStorageSync('nickName');
 				let name = uni.getStorageSync('name')
-				if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0) { //没有本地存储为新用户，请先登录
+				if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0 || this.currentWeekIndex
+					.length === 0) { //没有本地存储为新用户，请先登录
 					this.modalName = 'DialogModal1'
 				} else {
 					this.onLogin()
@@ -445,18 +448,34 @@
 				this.setHeight()
 			},
 
+			onTabChange(e) {
+				this.selectWeekIndex = e.currentInd;
+				this.setWeekDate()
+				this.doInit()
+
+			},
+			showOrHideTab() {
+				this.showTab = !this.showTab
+			},
+			setCurrentWeek(){
+				this.currentWeekIndex = uni.getStorageSync('currentWeek').length===0? 0 : parseInt(uni.getStorageSync('currentWeek'))
+				this.selectWeekIndex = this.currentWeekIndex
+			},
+
 			setWeekDate() {
+				let gapWeekNum = this.selectWeekIndex - this.currentWeekIndex //选中的周数和当前周数之间的差值
 				var weekOfday = moment().format('E'); //计算今天是这周第几天
 				this.weekDate = {
-					1: moment().subtract(weekOfday - 1, 'days').format('YYYY-MM-DD'),
-					2: moment().subtract(weekOfday - 2, 'days').format('YYYY-MM-DD'),
-					3: moment().subtract(weekOfday - 3, 'days').format('YYYY-MM-DD'),
-					4: moment().subtract(weekOfday - 4, 'days').format('YYYY-MM-DD'),
-					5: moment().subtract(weekOfday - 5, 'days').format('YYYY-MM-DD'),
-					6: moment().subtract(weekOfday - 6, 'days').format('YYYY-MM-DD'),
-					7: moment().subtract(weekOfday - 7, 'days').format('YYYY-MM-DD')
+					1: moment().subtract(weekOfday - 1 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					2: moment().subtract(weekOfday - 2 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					3: moment().subtract(weekOfday - 3 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					4: moment().subtract(weekOfday - 4 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					5: moment().subtract(weekOfday - 5 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					6: moment().subtract(weekOfday - 6 - 7*gapWeekNum, 'days').format('YYYY-MM-DD'),
+					7: moment().subtract(weekOfday - 7 - 7*gapWeekNum, 'days').format('YYYY-MM-DD')
 				}
-				let currentMonthStr = moment().format('MM')
+				//月份是每周的第一天
+				let currentMonthStr = moment().subtract(weekOfday - 1 - 7*gapWeekNum, 'days').format('MM')
 				let currentMonth = parseInt(currentMonthStr)
 				let monthEnglishStr = ''
 				if (currentMonth === 1) {
@@ -663,20 +682,15 @@
 					}
 				})
 			},
-			onTabChange(e) {
-				this.tabIndex = e.currentId;
-				//可以使用computed：当设定的周数和当前周数一致时，显示“本周”，不一致时，显示“非本周”
-
-			},
-			showOrHideTab() {
-				this.showTab = !this.showTab
-			}
 		},
 		onLoad() {
+			this.setCurrentWeek()
 			this.setWeekDate()
 			this.doInit();
 		},
 		onTabItemTap(e) {
+			this.setCurrentWeek()
+			this.setWeekDate()
 			this.doInit()
 		},
 		computed: {
@@ -716,7 +730,15 @@
 					}
 				}
 				return list
+			},
+			headerWeekTxt: function() {
+				if (this.currentWeekIndex === this.selectWeekIndex) {
+					return this.weekSelectList[this.currentWeekIndex] + '（本周）'
+				} else {
+					return this.weekSelectList[this.selectWeekIndex] + '（非本周）'
+				}
 			}
+
 		}
 	}
 </script>
@@ -918,6 +940,11 @@
 
 	.weekTab>>>.scroll-view_hold {
 		padding: 18rpx 0rpx 18rpx 0rpx;
-
 	}
+	
+	.padding-left-right{
+		padding: 0rpx 32rpx;
+	}
+	
+
 </style>

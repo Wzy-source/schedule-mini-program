@@ -273,14 +273,14 @@
 		border-radius: 16rpx;
 		display: flex;
 		justify-content: space-between;
-		height: 180rpx;
+		height: 200rpx;
 		background-color: #FFFFFF;
 	}
 
 	.avatar {
 		align-self: center;
-		height: 110rpx;
-		width: 110rpx;
+		height: 120rpx;
+		width: 120rpx;
 		border-radius: 50%;
 	}
 
@@ -301,8 +301,8 @@
 	.nameTxt {
 		align-self: center;
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-		font-size: 30rpx;
-		margin-left: 24rpx;
+		font-size: 32rpx;
+		margin-left: 32rpx;
 	}
 
 	.toLoginArrow {
@@ -317,7 +317,7 @@
 	}
 
 	.myRecordList {
-		height: 90rpx;
+		height: 100rpx;
 		display: flex;
 		justify-content: space-between;
 		padding-left: 16rpx;
@@ -330,7 +330,7 @@
 	.itemStyle {
 		display: flex;
 		justify-content: space-between;
-		height: 90rpx;
+		height: 100rpx;
 	}
 
 	.itemContainer {

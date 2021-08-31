@@ -29,23 +29,19 @@
 					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
 				],
 				selectorIndex: 0,
-				currentWeekTxt: ''
+				currentWeekTxt: '第一周'
 			}
 		},
 		methods: {
 			onPickerChange(event) {
 				let index = event.detail.value
 				this.currentWeekTxt = this.weekSelectList[index]
-				//TODO 
+				uni.setStorageSync('currentWeek',index)
 			},
-			setCurrentWeek() {
-				//TODO 使用
-				
-
-			}
 		},
 		onLoad() {
-			this.setCurrentWeek()
+			this.selectorIndex = parseInt(uni.getStorageSync('currentWeek'))
+			this.currentWeekTxt = this.weekSelectList[this.selectorIndex]
 		}
 	}
 </script>
