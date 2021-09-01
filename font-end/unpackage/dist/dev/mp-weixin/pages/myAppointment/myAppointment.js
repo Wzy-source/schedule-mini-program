@@ -293,7 +293,7 @@ var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));f
       this.modalName = 'DialogModal1';
     }
     var system = uni.getSystemInfoSync();
-    this.swiperHeight = system.windowHeight - 44;
+    this.swiperHeight = system.windowHeight - 40;
   },
   onReachBottom: function onReachBottom(e) {
     if (this.isTeacher === 'true') {
@@ -306,9 +306,9 @@ var _url = _interopRequireDefault(__webpack_require__(/*! ../../url.js */ 17));f
           this.acceptIndex, "&pageSize=").concat(this.pageSize, "&status=1"),
           method: 'GET',
           success: function success(res) {
+
             setTimeout(function () {
               _this.loadProgress = 0;
-
               var list = res.data.appointmentList;
               for (var i = 0; i < list.length; i++) {
                 _this.acceptList.push(list[i]);

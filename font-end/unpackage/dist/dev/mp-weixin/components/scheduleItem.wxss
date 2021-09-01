@@ -6,7 +6,7 @@
 	height: 100%;
 }
 .container {
-	border-radius: 16rpx;
+	border-radius: 20rpx;
 	height: 100%;
 	box-shadow: 0px 4rpx 4rpx rgba(0, 0, 0, 0.2);
 	overflow: hidden;
@@ -36,7 +36,6 @@
 .txt {
 	-webkit-align-self: center;
 	        align-self: center;
-	color: #707070;
 	font-weight: 400;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: 24rpx;

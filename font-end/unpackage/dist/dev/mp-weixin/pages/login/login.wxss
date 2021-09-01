@@ -17,10 +17,10 @@ page {
 .logo {
 	-webkit-align-self: center;
 	        align-self: center;
-	width: 120rpx;
-	height: 120rpx;
+	width: 140rpx;
+	height: 140rpx;
 	border-radius: 32rpx;
-	margin-top: 160rpx;
+	margin-top: 300rpx;
 }
 .logo > image{
 	width: 100%;
@@ -30,7 +30,7 @@ page {
 .name {
 	-webkit-align-self: center;
 	        align-self: center;
-	font-size: 28rpx;
+	font-size: 32rpx;
 	color: #8F8F94;
 	margin-top: 24rpx;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

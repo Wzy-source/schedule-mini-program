@@ -161,7 +161,7 @@
 				this.modalName = 'DialogModal1'
 			}
 			let system = uni.getSystemInfoSync();
-			this.swiperHeight = system.windowHeight - 44;
+			this.swiperHeight = system.windowHeight - 40;
 		},
 		onReachBottom(e) {
 			if (this.isTeacher === 'true') {
@@ -174,9 +174,9 @@
 							`appointment/getAppointmentByStatus?pageIndex=${this.acceptIndex}&pageSize=${this.pageSize}&status=1`,
 						method: 'GET',
 						success(res) {
+
 							setTimeout(() => {
 								_this.loadProgress = 0;
-
 								let list = res.data.appointmentList;
 								for (var i = 0; i < list.length; i++) {
 									_this.acceptList.push(list[i])
@@ -388,7 +388,7 @@
 
 	.tab {
 		width: 100vw;
-		height: 64px;
+		height: 80rpx;
 		display: flex;
 		flex-direction: row;
 		/* TODO 要和最后的头部颜色一致 */
@@ -437,14 +437,14 @@
 
 	.tabItem {
 		display: flex;
-		margin-top: 40rpx;
+		margin-top: 16rpx;
+		padding-left: 12rpx;
 
 	}
 
 	.tabItemTitle {
 		color: #d2f1f0;
 		font-size: 30rpx;
-		height: 80rpx;
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: center;

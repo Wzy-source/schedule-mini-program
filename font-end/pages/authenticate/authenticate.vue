@@ -10,7 +10,7 @@
 					<input placeholder="姓名" type="text" v-model="name"></input>
 				</view>
 				<view class="inputStyle">
-					<input placeholder="学工号" type="text" v-model="studentId"></input>
+					<input placeholder="学号/工号" type="text" v-model="studentId"></input>
 				</view>
 			</view>
 			<view class="weekPicker">
@@ -19,8 +19,8 @@
 					<view style="color: #5ab2b3;">{{currentWeek}}</view>
 				</picker>
 			</view>
-			<view class="toIndexBtn">
-				<button class="cu-btn round bg-gradual-blue" @tap="certification">确认</button>
+			<view class="toIndexBtn" @tap='certification'>
+				<image src="../../static/operation/enter.png" mode="scaleToFill"></image>
 			</view>
 		</view>
 	</view>
@@ -39,7 +39,7 @@
 				weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周',
 					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
 				],
-				currentWeek: '请选择'
+				currentWeek: '请点此处选择'
 
 			}
 		},
@@ -153,19 +153,16 @@
 	}
 
 	.toIndexBtn {
+		border-radius: 50%;
 		align-self: center;
-		margin-top: 80rpx;
-		width: 60%;
-		height: 80rpx;
+		margin-top: 100rpx;
+		width: 136rpx;
+		height: 136rpx;
 	}
 
-	.toIndexBtn>button {
+	.toIndexBtn>image {
 		width: 100%;
-		font-size: 36rpx;
 		height: 100%;
-		font-weight: 300;
-		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-		box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.3);
 	}
 
 	.weekPicker {
@@ -173,17 +170,18 @@
 		align-self: center;
 		width: 80%;
 		justify-content: space-between;
-		padding-left: 36rpx;
+		padding-left: 38rpx;
 		margin-top: 42rpx;
 		border: none;
 		border-bottom: #1296db 2rpx solid;
 		padding-bottom: 24rpx;
+		padding-right: 16rpx;
 	}
 
 	.weekPicker>view {
 		align-self: center;
 		font-size: 32rpx;
-		color: #666666;
+		color: #808080;
 	}
 
 	.weekPicker>picker {

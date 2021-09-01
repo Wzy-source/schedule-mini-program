@@ -3,7 +3,7 @@
 		<view class="logo">
 			<image src="https://se-2-bighomework.oss-cn-hangzhou.aliyuncs.com/images/logo.png?OSSAccessKeyId=LTAI5t9BkdFHRepa7WyHJkpZ&Expires=3777691577&Signature=lLIs8wcjJM90hJ0BVDttm6UV6bU%3D" mode="scaleToFill"></image>
 		</view>
-		<view class="name">菲姐陪你唠</view>
+		<view class="name">菲姐陪你唠一唠</view>
 		<view class="btn">
 			<button class="cu-btn round bg-gradual-blue" @tap="getUserProfile">微信登陆</button>
 		</view>
@@ -91,10 +91,10 @@
 
 	.logo {
 		align-self: center;
-		width: 120rpx;
-		height: 120rpx;
+		width: 140rpx;
+		height: 140rpx;
 		border-radius: 32rpx;
-		margin-top: 160rpx;
+		margin-top: 300rpx;
 	}
 	
 	.logo > image{
@@ -105,7 +105,7 @@
 
 	.name {
 		align-self: center;
-		font-size: 28rpx;
+		font-size: 32rpx;
 		color: #8F8F94;
 		margin-top: 24rpx;
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

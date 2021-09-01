@@ -1,7 +1,7 @@
 <template>
 	<view :style="{height:itemHeight+'rpx' }" @longpress="onLongPress">
 		<view class="page" :style="{border:borderSize+'rpx solid #8F8F94'}" @tap="onClick">
-			<view class="container" v-if="scheduleInfo.type==='teacher'" style="background-color:#88DEF9 ;">
+			<view class="container" v-if="scheduleInfo.type==='teacher'" style="background-color:#dbf3f7 ;">
 				<!-- 这里要分老师和学生两种情况，先用老师 -->
 				<view class="info">
 					<view class="icon">
@@ -9,23 +9,23 @@
 					</view>
 					<view class="txt">毕菲菲</view>
 					<view class="icon">
-						<image src="../static/people/location.png" mode="scaleToFill"></image>
+						<image src="../static/people/position.png" mode="scaleToFill"></image>
 					</view>
-					<view class="txt">{{scheduleInfo.place}}</view>
+					<view class="txt text-brown">{{scheduleInfo.place}}</view>
 				</view>
 			</view>
 
-			<view class="container" v-if="scheduleInfo.type==='student'" style="background-color: #F0AD4E;">
+			<view class="container" v-if="scheduleInfo.type==='student'" style="background-color: #fdeecf;">
 				<!-- 这里要分老师和学生两种情况，先用老师 -->
 				<view class="info">
 					<view class="icon">
-						<image src="../static/people/mystudent.png" mode="scaleToFill"></image>
+						<image src="../static/people/student.png" mode="scaleToFill"></image>
 					</view>
 					<view class="txt">{{scheduleInfo.name}}</view>
 					<view class="icon">
-						<image src="../static/people/location.png" mode="scaleToFill"></image>
+						<image src="../static/people/position.png" mode="scaleToFill"></image>
 					</view>
-					<view class="txt">{{scheduleInfo.place}}</view>
+					<view class="txt text-brown">{{scheduleInfo.place}}</view>
 				</view>
 			</view>
 		</view>
@@ -95,13 +95,12 @@
 	}
 
 	.container {
-		border-radius: 16rpx;
+		border-radius: 20rpx;
 		height: 100%;
 		box-shadow: 0px 4rpx 4rpx rgba(0, 0, 0, 0.2);
 		overflow: hidden;
 		box-sizing: border-box;
 		padding: 2rpx;
-
 	}
 
 	.info {
@@ -124,7 +123,6 @@
 
 	.txt {
 		align-self: center;
-		color: #707070;
 		font-weight: 400;
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 		font-size: 24rpx;

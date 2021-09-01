@@ -5,7 +5,7 @@
 				<view class="weekNumTxt">{{headerWeekTxt}}</view>
 			</view>
 			<view class="weekTab" v-if="showTab">
-				<vgt-tab :list="weekSelectList" @onValueChange='onTabChange' :defaultChoseInd="currentWeekIndex">
+				<vgt-tab :list="weekSelectList" @onValueChange='onTabChange' :defaultChoseInd="selectWeekIndex">
 				</vgt-tab>
 			</view>
 		</view>
@@ -323,8 +323,7 @@
 				let avatarUrl = uni.getStorageSync('avatarUrl');
 				let nickName = uni.getStorageSync('nickName');
 				let name = uni.getStorageSync('name')
-				if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0 || this.currentWeekIndex
-					.length === 0) { //没有本地存储为新用户，请先登录
+				if (nickName.length === 0 || avatarUrl.length === 0 || name.length === 0) { //没有本地存储为新用户，请先登录
 					this.modalName = 'DialogModal1'
 				} else {
 					this.onLogin()
@@ -687,6 +686,7 @@
 			this.setCurrentWeek()
 			this.setWeekDate()
 			this.doInit();
+			console.log(this.isTeacher)
 		},
 		onTabItemTap(e) {
 			this.setCurrentWeek()
@@ -765,6 +765,7 @@
 
 	.weekDayHeight {
 		height: 90rpx;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	}
 
 	.dayTimeItem {
@@ -926,7 +927,7 @@
 	.currentWeek {
 		display: flex;
 		justify-content: center;
-		height: 78rpx;
+		height: 80rpx;
 		background-color: #36c3bb;
 		box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.2);
 	}
@@ -934,7 +935,7 @@
 	.currentWeek>view {
 		align-self: center;
 		font-size: 34rpx;
-		font-weight: 500;
+		color: #F8F8F8;
 	}
 
 

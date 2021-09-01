@@ -18,7 +18,7 @@
 }
 .tab {
 	width: 100vw;
-	height: 64px;
+	height: 80rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -71,12 +71,12 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	margin-top: 40rpx;
+	margin-top: 16rpx;
+	padding-left: 12rpx;
 }
 .tabItemTitle {
 	color: #d2f1f0;
 	font-size: 30rpx;
-	height: 80rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

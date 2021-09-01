@@ -18,6 +18,7 @@
 }
 .weekDayHeight.data-v-57280228 {
 	height: 90rpx;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .dayTimeItem.data-v-57280228 {
 	border: none;
@@ -174,7 +175,7 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
-	height: 78rpx;
+	height: 80rpx;
 	background-color: #36c3bb;
 	box-shadow: 0px 6rpx 6rpx rgba(0, 0, 0, 0.2);
 }
@@ -182,7 +183,7 @@
 	-webkit-align-self: center;
 	        align-self: center;
 	font-size: 34rpx;
-	font-weight: 500;
+	color: #F8F8F8;
 }
 .weekTab.data-v-57280228 .scroll-view_hold {
 	padding: 18rpx 0rpx 18rpx 0rpx;
