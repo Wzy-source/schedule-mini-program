@@ -9,11 +9,14 @@
 						<view class="pickerFontStyle">
 							<view class="itemValue">
 								<text>当前周数：</text>
-								<text style="color: #0081FF;">{{currentWeekTxt}}</text>
+								<text style="color: #0081FF;font-weight: 500;">{{currentWeekTxt}}</text>
 							</view>
 						</view>
 					</picker>
-
+				</view>
+				<view class="settingsItem" v-if="isTeacher==='true'">
+					<view class="itemKey">预约信息导出(Beta)</view>
+					<view style="color: #0081FF; font-weight: 500;" class="itemValue downLoadTxt" @tap='downloadExcel'>点此下载预约记录文件</view>
 				</view>
 			</view>
 
@@ -22,6 +25,7 @@
 </template>
 
 <script>
+	import baseUrl from '../../../url.js'
 	export default {
 		data() {
 			return {
@@ -29,15 +33,53 @@
 					'第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'
 				],
 				selectorIndex: 0,
-				currentWeekTxt: '第一周'
+				currentWeekTxt: '第一周',
+				isTeacher:uni.getStorageSync('isTeacher')
 			}
 		},
 		methods: {
 			onPickerChange(event) {
 				let index = event.detail.value
 				this.currentWeekTxt = this.weekSelectList[index]
-				uni.setStorageSync('currentWeek',index)
+				uni.setStorageSync('currentWeek', index)
 			},
+			downloadExcel() {
+				uni.request({
+					url: baseUrl + 'appointment/getForm',
+					success(res) {
+						let fileUrl = res.data.url
+						uni.showToast({
+							title:'下载中',
+							duration:3000,
+							icon:'loading'
+						})
+						uni.downloadFile({
+							url: fileUrl,
+							success(res) {
+								if(res.statusCode===200){
+									uni.hideToast()
+									uni.showToast({
+										title:'下载完成',
+										duration:1000,
+										icon:'success'
+									})
+									uni.saveFile({
+										tempFilePath:res.tempFilePath,
+										success(res) {
+											uni.openDocument({
+												filePath:res.savedFilePath,
+												success(res) {
+													console.log(res)
+												}
+											})
+										}
+									})
+								}
+							}
+						})
+					}
+				})
+			}
 		},
 		onLoad() {
 			this.selectorIndex = parseInt(uni.getStorageSync('currentWeek'))
@@ -66,6 +108,7 @@
 	}
 
 	.settingsItem {
+		margin-top: 16rpx;
 		height: 80rpx;
 		display: flex;
 		justify-content: space-between;
@@ -91,4 +134,6 @@
 		align-self: center;
 		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	}
+	
+	
 </style>

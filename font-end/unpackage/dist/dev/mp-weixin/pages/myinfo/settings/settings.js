@@ -130,45 +130,87 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周',
-      '第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'],
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-      selectorIndex: 0,
-      currentWeekTxt: '第一周' };
 
-  },
-  methods: {
-    onPickerChange: function onPickerChange(event) {
-      var index = event.detail.value;
-      this.currentWeekTxt = this.weekSelectList[index];
-      uni.setStorageSync('currentWeek', index);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _url = _interopRequireDefault(__webpack_require__(/*! ../../../url.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { weekSelectList: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周', '第十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'], selectorIndex: 0, currentWeekTxt: '第一周', isTeacher: uni.getStorageSync('isTeacher') };}, methods: { onPickerChange: function onPickerChange(event) {var index = event.detail.value;this.currentWeekTxt = this.weekSelectList[index];uni.setStorageSync('currentWeek', index);}, downloadExcel: function downloadExcel() {uni.request({ url: _url.default + 'appointment/getForm', success: function success(res) {var fileUrl = res.data.url;uni.showToast({ title: '下载中', duration: 3000, icon: 'loading' });
+
+          uni.downloadFile({
+            url: fileUrl,
+            success: function success(res) {
+              if (res.statusCode === 200) {
+                uni.hideToast();
+                uni.showToast({
+                  title: '下载完成',
+                  duration: 1000,
+                  icon: 'success' });
+
+                uni.saveFile({
+                  tempFilePath: res.tempFilePath,
+                  success: function success(res) {
+                    uni.openDocument({
+                      filePath: res.savedFilePath,
+                      success: function success(res) {
+                        console.log(res);
+                      } });
+
+                  } });
+
+              }
+            } });
+
+        } });
+
     } },
 
   onLoad: function onLoad() {
